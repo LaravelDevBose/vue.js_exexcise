@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Vue.js - Introduction</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
+
+<!-- Latest compiled and minified JavaScript -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+</head>
+<body>
+
+	<div class="container well">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div id="app"  v-bind:title="title" >
+					<div class="col-md-12">
+						<center>
+							<h1 v-bind:title="welcomeTitle">{{ welcome }}</h1>
+							
+						</center>
+						<hr>
+					</div>
+					
+					<div class="col-md-6">
+						<label class="text-center">Fatuct data Todo List (v-for)</label>
+						<p v-for="todo in todos">Todo : #{{ todo.id }} <span> {{ todo.text }} </span> </p>
+					</div>
+
+					<div class="col-md-6">
+						<label class="center"> Counter (V-for) Used</label>
+						<p v-for="count in counts">count : #{{ count }}</p>
+					</div>
+
+					<div class="col-md-12">
+						<div class="col-md-12">							
+							<label class="text-center"> Reverse Your Message Using  v-on:click Event</label>
+							<p>{{ message }}</p>
+						</div>
+						<div class="col-md-8">							
+							<input type="text" v-model="message"  class="form-control">
+						</div>
+						<button v-on:click="reverseMessage" class="btn btn-info col-md-4">Reverse Message</button>
+					</div>
+
+					<div class="col-md-12" >
+						<center><h1>Deriactive Example</h1></center>
+						<p>V-text: <span v-text="vText"></span></p>
+						<p>V-text: <label v-html="vHtml"></label></p>
+						<p > V-if : <label @if="seen"> This message Show if seen is equeal true</label></p>
+						<p > V-if-else : <label v-if="show" > This message Show if show is equeal true</label> <label v-else> This message show coz show is equeal false </label>
+						<p>V-bind: <img v-bind:src="image" :atr="title" :title="title" height="50" width="50" /></p>2
+					</div>
+
+					<div class="col-md-12">
+						<center>
+							<h1>2- Way binding Example</h1>
+							<p>Date: <span>{{ bindValye }}</span></p>
+							<input type="text" v-model="bindValye" class="form-control" >
+						</center>
+					</div>
+
+					<div class="col-md-12">
+						<center><h1>Event Handiling Example</h1></center>
+						<div class="col-md-6">							
+							<h3 class="text-center">On click Counter</h3>
+							<h5>Count : {{ counter }}</h5>
+							<button class="btn btn-success btn-sm" v-on:click="countUp">Count Up</button>
+							<button class="btn btn-danger btn-sm" v-on:click="countDown">Count Down</button>
+						</div>
+						<div class="col-md-6">
+							 <h3>Mouse Hover Event Example</h3>
+							 <button v-on:mouseover="mouseOver" @mouseleave="mouseLeave" class="btn btn-info btn-sm">Hover Me And Show the Magic</button>
+							 <div v-html="hoverValue"></div>
+						</div>
+						<div class="col-md-6">
+							<h3>on-click Humanize Url Example</h3>
+							<p>Visit: <a v-bind:href="url">{{ cleanUrl }}</a></p>
+							<input type="text" v-model="url" class="form-control col-md-8">
+							<button @click="humanizeUrl" class="btn btn-primary btn-sm col-md-4">Humanize Me!</button>
+						</div>
+					</div>
+
+					<div class="col-md-12">
+						<center><h1>Comuted Properties Example</h1></center>
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<h3>Hello {{ fullName }}</h3>
+									<ul class="text-left">
+										<li>First Name : {{ firstName }}</li>
+										<li>Last Name : {{ lastName }}</li>
+									</ul>
+									<hr>
+								</div>
+								
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>First Name: </label>
+										<input type="text" class="form-control" v-model="firstName">
+									</div>						
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Last Name: </label>
+										<input type="text" class="form-control" v-model="lastName">
+									</div>						
+								</div>
+								
+							</div>
+							
+						</div>
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<h1>You are in <strong :class="lavelColor">{{ lavel }}</strong></h1>
+									<h3>Current xp: {{ xp}} </h3>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 col-md-offset-3">
+									<div class="row">
+										<div class="col-md-6">
+											<button class="btn btn-block btn-primary" @click="addXp"> <span class="glyphicon glyphicon-collapse-up"></span> Add Xp</button>
+										</div>
+										<div class="col-md-6">
+											<button class="btn btn-block btn-warning" @click="decreaseXp"> <span class="glyphicon glyphicon-collapse-down"></span> Decrease Xp</button>
+										</div>
+									</div>
+									
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+
+ 
+
+</body>
+	<script type="text/javascript" src="https://unpkg.com/vue@2.5.15/dist/vue.js"></script>
+	<script type="text/javascript" src="part1_vue.js"></script>
+</html>
