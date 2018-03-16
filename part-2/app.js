@@ -18,6 +18,12 @@ new Vue({
 		mousePosition:function(event){
 			this.x=event.offsetX;
 			this.y = event.offsetY
+		},
+		onceModifier:function(){
+			alert('This  Click Button Just Work For One Time')
+		},
+		preventModifier:function(){
+			alert('Not Got Default Url')
 		}
 	}
 
