@@ -1,4 +1,4 @@
-new Vue({
+var app = new Vue({
 	el:'#app',
 	data:{
 		num:1,
@@ -8,7 +8,16 @@ new Vue({
         keyUp:'',
         keyAltUp:'',
 		ave:false,
-        nearBy:false
+        nearBy:false,
+        skills:['HTML', 'CSS','PHP','Laravel','JavaScript','JQuery','Java','C','Vue.js'],
+        friends:[
+            {'name':'Hasib','age':'24'},
+            {'name':'Tommoy','age':'24'},
+            {'name':'Suvo','age':'25'},
+            {'name':'Amit Nag','age':'24.5'},
+            {'name':'Amit Chandro','age':'24'},
+            {'name':'Dipok','age':'24'}
+        ]
 	},
 	methods:{
 		greet:function(parameters){
