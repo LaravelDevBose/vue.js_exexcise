@@ -3,10 +3,16 @@ new Vue({
 	data:{
 		num:1,
 		x:0,
-		y:0
+		y:0,
+        pressKey:'',
+        keyUp:'',
+        keyAltUp:'',
+		ave:false,
+        nearBy:false
 	},
 	methods:{
-		greet:function(time = 'Morning'){
+		greet:function(parameters){
+            var time = parameters.time;
 			return "Good "+time
 		},
 		add:function(inc){
@@ -24,7 +30,29 @@ new Vue({
 		},
 		preventModifier:function(){
 			alert('Not Got Default Url')
-		}
-	}
+		},
+		keyPress:function (event) {
+
+		    this.pressKey += event.key;
+
+        },
+        keyUpHitEnter:function () {
+
+            this.keyUp = 'you Press The Enter'
+        },
+        keyUpHitAltssEnter:function () {
+            this.keyAltUp ='You Hit Alt Plus Enter'
+        }
+
+	},
+    computed:{
+        comptClasses:function(){
+            return{
+                ave:this.ave,
+                nearBy: this.nearBy,
+            }
+        }
+    }
+
 
 });

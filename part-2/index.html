@@ -2,41 +2,66 @@
 <html>
 <head>
 	<title>Vue js Part-2</title>
-	<style type="text/css">
-		#canvase{
-			width: 550px;
-			text-align: center;
-			padding: 200px 20px;
-			border: 1px solid red;
-			margin: 0  auto 20px auto;
-		}
-		#can{
-			text-align: center;
-		}
-	</style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<div id="app">
 		<h1>{{ greet('AfterNoon') }}</h1>
-		<h3>Event</h3>
+		<h1>Event</h1>
 
 		<p>Number : {{ num }}</p>
-		<button v-on:click="num++">add</button>
-		<button v-on:click="num--">sub</button>
+		<button @click="num++">add</button>
+		<button @click="num--">sub</button>
 
-		<button v-on:click="add(1)">add 1</button>
-		<button v-on:click="sub(1)">sub 1</button>
+		<button @click="add(1)">add 1</button>
+		<button @click="sub(1)">sub 1</button>
 
-		<button v-on:dblclick="add(5)">add 5</button>
-		<button v-on:dblclick="sub(5)">sub 5</button>
+		<button @dblclick="add(5)">add 5</button>
+		<button @dblclick="sub(5)">sub 5</button>
 
 		<h1 id="can">My Canvase</h1>
 		<div id="canvase" @mousemove="mousePosition"> {{x}},{{y}}</div>
 		<br> <br> <hr>
 		<div>
-			<h1>Mouse Event Modifier</h1>
-			<button v-on:click.once="onceModifier">once Modifierx	</button>
+			<h3>Mouse Event Modifier</h3>
+			<button @click.once="onceModifier">once Modifierx	</button>
 			<a @click.prevent="preventModifier" href="www.google.com">One Time</a>
+		</div>
+
+		<div>
+			<h3>key Board Event</h3>
+
+			<label>Key Press Event</label>
+			<input type="text" @keypress="keyPress" placeholder="Just press key">
+			<p>Result: {{ pressKey }}</p>
+            <br>
+            <hr>
+
+            <h3>key Up Event & Modifier </h3>
+            <label>Key Press Event</label>
+            <input type="text" @keyup.enter="keyUpHitEnter" style="width: 500px" placeholder="Just press key After Complete Hit Enter">
+            <p>Result: {{ keyUp }}</p>
+
+            <h3>key Up Event & Modifier </h3>
+            <label>Key Press Event</label>
+            <input type="text" @keyup.alt.enter="keyUpHitAltssEnter" style="width: 500px" placeholder="Complete Hit Alt + Enter">
+            <p>Result: {{ keyAltUp }}</p>
+		</div>
+
+		<div>
+			<h1 style="text-align: center">Class Binding</h1>
+
+            <h3>Example 1</h3>
+            <div @click="ave = !ave" :class="{ave: ave}">
+                <span>click Me!</span>
+            </div>
+
+            <h3>Example 2</h3>
+            <button @click="nearBy = !nearBy">Toggle Nearby</button>
+            <button @click="ave = !ave">Toggle Available</button>
+            <div :class="comptClasses">
+                <span>Result</span>
+            </div>
 		</div>
 
 	</div>
